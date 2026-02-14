@@ -58,6 +58,7 @@ public partial class Session3p1Context : DbContext
             entity.Property(e => e.CourseId)
                 .ValueGeneratedOnAdd()
                 .HasColumnName("course_id");
+            entity.Property(e => e.EnrollmentDate).HasColumnName("enrollment_date");
             entity.Property(e => e.StudentId)
                 .ValueGeneratedOnAdd()
                 .HasColumnName("student_id");
