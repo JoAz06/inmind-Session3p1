@@ -18,4 +18,13 @@ public partial class Session3p2Context : DbContext
     public DbSet<Student> Students { get; set; }
     public DbSet<Teacher> Teachers { get; set; }
     public DbSet<Enrollment> Enrollments { get; set; }
+    
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.Entity<Enrollment>()
+            .HasKey(e => new { e.StudentId, e.CourseId });
+
+        base.OnModelCreating(modelBuilder);
+    }
+    
 }
