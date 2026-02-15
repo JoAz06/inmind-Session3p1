@@ -6,8 +6,9 @@ namespace inmind_Session3p1.Controllers;
 [Route("api/[controller]")]
 public class StudentsController : ControllerBase
 {
-    private readonly inmind_Session3p1.Models.Session3p1Context _context;
-    public StudentsController(inmind_Session3p1.Models.Session3p1Context context)
+    //Session3p1
+    private readonly inmind_Session3p1.Models.Session3p2Context _context;
+    public StudentsController(inmind_Session3p1.Models.Session3p2Context context)
     {
         _context = context;
     }
@@ -18,7 +19,7 @@ public class StudentsController : ControllerBase
         if(asc)
             return _context.Enrollments.Where(enroll => enroll.CourseId == course_id).OrderBy(enroll => enroll.EnrollmentDate).Select(stud => stud.Student).ToList();
         return _context.Enrollments.Where(enroll => enroll.CourseId == course_id).OrderByDescending(enroll => enroll.EnrollmentDate).Select(stud => stud.Student).ToList();
-        //Order is getting scrambeled after selecting students
+        //Order is getting scrambled after selecting students
     }
 
     [HttpGet("groupByYear")]
@@ -44,6 +45,9 @@ public class StudentsController : ControllerBase
     {
         return _context.Enrollments.Skip(pageSize*(pageNumber-1)).Take(pageSize).ToList();
     }
+    // end Session3p1
+    
+    //Session3p2
     
     
 }
