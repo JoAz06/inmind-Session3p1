@@ -1,4 +1,5 @@
 using inmind_Session3p1.Models;
+using inmind_Session3p1.Mappers;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -8,6 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddControllers();
+builder.Services.AddAutoMapper(typeof(MapperProfile).Assembly);
 builder.Services.AddDbContext<inmind_Session3p1.Models.Session3p2Context>(options => options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 
@@ -41,6 +43,7 @@ app.MapGet("/weatherforecast", () =>
     })
     .WithName("GetWeatherForecast")
     .WithOpenApi();
+
 
 app.MapControllers();
 app.Run();

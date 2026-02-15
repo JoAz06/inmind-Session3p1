@@ -14,4 +14,11 @@ public partial class Enrollment
     public Course Course { get; set; } = null!;
 
     public Student Student { get; set; } = null!;
+
+    public Enrollment(int StudentId, int CourseId, DateOnly? EnrollmentDate)
+    {
+        this.StudentId = StudentId;
+        this.CourseId = CourseId;
+        this.EnrollmentDate = EnrollmentDate;
+    }
 }

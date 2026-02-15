@@ -12,4 +12,11 @@ public partial class Course
     public int TeacherId { get; set; }
 
     public virtual Teacher Teacher { get; set; } = null!;
+
+    public Course(int Id, string Name, int TeacherId)
+    {
+        this.Id = Id;
+        this.Name = Name;
+        this.TeacherId = TeacherId;
+    }
 }
