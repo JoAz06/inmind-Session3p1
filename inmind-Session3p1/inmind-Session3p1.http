@@ -1,6 +1,0 @@
-@inmind_Session3p1_HostAddress = http://localhost:5175
-
-GET {{inmind_Session3p1_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###
