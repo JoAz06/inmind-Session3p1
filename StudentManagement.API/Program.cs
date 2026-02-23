@@ -1,20 +1,27 @@
+using FluentValidation;
+using FluentValidation.AspNetCore;
+using StudentManagement.API.Middleware;
+using StudentManagement.API.Validators;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddFluentValidationAutoValidation();
+builder.Services.AddValidatorsFromAssemblyContaining<CreateStudentValidator>();
 
 var app = builder.Build();
 
+
+app.UseMiddleware<ExceptionHandlingMiddleware>();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
-app.UseHttpsRedirection();
 
 var summaries = new[]
 {
